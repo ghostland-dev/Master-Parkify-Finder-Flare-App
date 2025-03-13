@@ -7,11 +7,14 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { ArrowLeft, MapPin, Clock, Car, Euro, Navigation } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import ParkingMap from "@/components/ParkingMap";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const ParkingDetail = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const { getParkingById } = useParking();
+  const isMobile = useIsMobile();
   const parking = getParkingById(id || "");
 
   if (!parking) {
@@ -39,11 +42,21 @@ const ParkingDetail = () => {
     return "Complet";
   };
 
+  // Mock coordinates for the parking location
+  const parkingLocation = {
+    lat: 48.8534 + (Number(parking.id) * 0.01), // Generated based on ID to create different positions
+    lng: 2.3488 + (Number(parking.id) * 0.01),
+    name: parking.name,
+    id: parking.id,
+    availableSpots: parking.availableSpots,
+    totalSpots: parking.totalSpots
+  };
+
   return (
     <div className="min-h-screen bg-gray-100">
       <div className="relative h-48 bg-primary-blue/90">
         <button 
-          className="absolute top-4 left-4 bg-white rounded-full p-2"
+          className="absolute top-4 left-4 bg-white rounded-full p-2 z-10"
           onClick={() => navigate(-1)}
         >
           <ArrowLeft className="h-5 w-5" />
@@ -59,6 +72,18 @@ const ParkingDetail = () => {
       </div>
 
       <div className="px-4 py-5">
+        <Card className="mb-4">
+          <CardContent className="p-0 overflow-hidden">
+            <ParkingMap 
+              center={[parkingLocation.lat, parkingLocation.lng]}
+              zoom={15}
+              locations={[parkingLocation]}
+              height={isMobile ? "200px" : "250px"}
+              singleLocation={true}
+            />
+          </CardContent>
+        </Card>
+
         <Card className="mb-4">
           <CardContent className="p-4">
             <div className="flex justify-between mb-2">

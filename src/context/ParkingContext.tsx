@@ -2,8 +2,16 @@
 import React, { createContext, useContext, useState, ReactNode } from "react";
 import { ParkingItemProps } from "@/components/ParkingItem";
 
+// Extended data for map coordinates
+interface ParkingData extends ParkingItemProps {
+  coordinates?: {
+    lat: number;
+    lng: number;
+  };
+}
+
 // Données de stationnement de démonstration
-const mockParkingData: ParkingItemProps[] = [
+const mockParkingData: ParkingData[] = [
   {
     id: "1",
     name: "Parking Centre-Ville",
@@ -14,6 +22,10 @@ const mockParkingData: ParkingItemProps[] = [
     totalSpots: 120,
     openTime: "06:00",
     closeTime: "23:00",
+    coordinates: {
+      lat: 48.8634,
+      lng: 2.3588
+    }
   },
   {
     id: "2",
@@ -25,6 +37,10 @@ const mockParkingData: ParkingItemProps[] = [
     totalSpots: 200,
     openTime: "05:00",
     closeTime: "00:00",
+    coordinates: {
+      lat: 48.8734,
+      lng: 2.3688
+    }
   },
   {
     id: "3",
@@ -32,10 +48,14 @@ const mockParkingData: ParkingItemProps[] = [
     address: "8 Place du Marché",
     distance: "750m",
     price: "2,00€/h",
-    availableSpots: 0,
+    availableSpots: a0,
     totalSpots: 80,
     openTime: "07:00",
     closeTime: "20:00",
+    coordinates: {
+      lat: 48.8434,
+      lng: 2.3388
+    }
   },
   {
     id: "4",
@@ -47,6 +67,10 @@ const mockParkingData: ParkingItemProps[] = [
     totalSpots: 60,
     openTime: "07:30",
     closeTime: "22:30",
+    coordinates: {
+      lat: 48.8834,
+      lng: 2.3788
+    }
   },
   {
     id: "5",
@@ -58,20 +82,24 @@ const mockParkingData: ParkingItemProps[] = [
     totalSpots: 50,
     openTime: "08:00",
     closeTime: "19:00",
+    coordinates: {
+      lat: 48.8334,
+      lng: 2.3288
+    }
   },
 ];
 
 interface ParkingContextType {
-  parkings: ParkingItemProps[];
+  parkings: ParkingData[];
   loading: boolean;
   searchParking: (query: string) => void;
-  getParkingById: (id: string) => ParkingItemProps | undefined;
+  getParkingById: (id: string) => ParkingData | undefined;
 }
 
 const ParkingContext = createContext<ParkingContextType | undefined>(undefined);
 
 export const ParkingProvider = ({ children }: { children: ReactNode }) => {
-  const [parkings, setParkings] = useState<ParkingItemProps[]>(mockParkingData);
+  const [parkings, setParkings] = useState<ParkingData[]>(mockParkingData);
   const [loading, setLoading] = useState(false);
 
   const searchParking = (query: string) => {
