@@ -1,6 +1,6 @@
 
 import { Link, useLocation } from "react-router-dom";
-import { MapPin, User, Search, Clock } from "lucide-react";
+import { MapPin, User, Search, Clock, History } from "lucide-react";
 
 const Navbar = () => {
   const location = useLocation();
@@ -18,6 +18,8 @@ const Navbar = () => {
         return <Search className={iconClass} />;
       case "/bookings":
         return <Clock className={iconClass} />;
+      case "/history":
+        return <History className={iconClass} />;
       case "/profile":
         return <User className={iconClass} />;
       default:
@@ -32,6 +34,7 @@ const Navbar = () => {
           { path: "/", label: "Carte" },
           { path: "/search", label: "Recherche" },
           { path: "/bookings", label: "Réservations" },
+          { path: "/history", label: "Historique" },
           { path: "/profile", label: "Profil" }
         ].map((item) => {
           const active = location.pathname === item.path;

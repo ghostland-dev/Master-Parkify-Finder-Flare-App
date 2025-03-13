@@ -119,7 +119,12 @@ const ParkingDetail = () => {
             <Navigation className="w-4 h-4" />
             <span>Y aller</span>
           </Button>
-          <Button variant="outline" className="flex items-center justify-center gap-2">
+          <Button 
+            variant="outline" 
+            className="flex items-center justify-center gap-2"
+            onClick={() => navigate(`/parking/${parking.id}/book`)}
+            disabled={parking.availableSpots === 0}
+          >
             <Car className="w-4 h-4" />
             <span>Réserver</span>
           </Button>

@@ -1,5 +1,6 @@
 
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import Header from "@/components/Header";
 import Navbar from "@/components/Navbar";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -12,6 +13,8 @@ import {
 } from "lucide-react";
 
 const Profile = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="flex flex-col min-h-screen bg-gray-100">
       <Header />
@@ -43,13 +46,21 @@ const Profile = () => {
           </CardHeader>
           <CardContent className="px-2 py-0">
             <div className="divide-y">
-              <Button variant="ghost" className="w-full justify-start py-6 rounded-none">
+              <Button 
+                variant="ghost" 
+                className="w-full justify-start py-6 rounded-none"
+                onClick={() => navigate("/settings")}
+              >
                 <User className="mr-3 h-5 w-5 text-gray-500" />
                 <span className="flex-1 text-left">Information personnelle</span>
                 <ChevronRight className="h-5 w-5 text-gray-400" />
               </Button>
               
-              <Button variant="ghost" className="w-full justify-start py-6 rounded-none">
+              <Button 
+                variant="ghost" 
+                className="w-full justify-start py-6 rounded-none"
+                onClick={() => navigate("/vehicles")}
+              >
                 <Car className="mr-3 h-5 w-5 text-gray-500" />
                 <span className="flex-1 text-left">Mes véhicules</span>
                 <ChevronRight className="h-5 w-5 text-gray-400" />
@@ -61,7 +72,11 @@ const Profile = () => {
                 <ChevronRight className="h-5 w-5 text-gray-400" />
               </Button>
               
-              <Button variant="ghost" className="w-full justify-start py-6 rounded-none">
+              <Button 
+                variant="ghost" 
+                className="w-full justify-start py-6 rounded-none"
+                onClick={() => navigate("/history")}
+              >
                 <History className="mr-3 h-5 w-5 text-gray-500" />
                 <span className="flex-1 text-left">Historique</span>
                 <ChevronRight className="h-5 w-5 text-gray-400" />
@@ -76,13 +91,21 @@ const Profile = () => {
           </CardHeader>
           <CardContent className="px-2 py-0">
             <div className="divide-y">
-              <Button variant="ghost" className="w-full justify-start py-6 rounded-none">
+              <Button 
+                variant="ghost" 
+                className="w-full justify-start py-6 rounded-none"
+                onClick={() => navigate("/settings")}
+              >
                 <Settings className="mr-3 h-5 w-5 text-gray-500" />
                 <span className="flex-1 text-left">Paramètres</span>
                 <ChevronRight className="h-5 w-5 text-gray-400" />
               </Button>
               
-              <Button variant="ghost" className="w-full justify-start py-6 rounded-none">
+              <Button 
+                variant="ghost" 
+                className="w-full justify-start py-6 rounded-none"
+                onClick={() => navigate("/support")}
+              >
                 <HelpCircle className="mr-3 h-5 w-5 text-gray-500" />
                 <span className="flex-1 text-left">Aide et support</span>
                 <ChevronRight className="h-5 w-5 text-gray-400" />
