@@ -16,33 +16,40 @@ import Settings from "./pages/Settings";
 import Support from "./pages/Support";
 import Vehicles from "./pages/Vehicles";
 import NotFound from "./pages/NotFound";
+import { useIsMobile } from "./hooks/use-mobile";
 
 const queryClient = new QueryClient();
 
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <ParkingProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/search" element={<Search />} />
-            <Route path="/parking/:id" element={<ParkingDetail />} />
-            <Route path="/parking/:id/book" element={<BookParking />} />
-            <Route path="/bookings" element={<Bookings />} />
-            <Route path="/history" element={<History />} />
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/settings" element={<Settings />} />
-            <Route path="/support" element={<Support />} />
-            <Route path="/vehicles" element={<Vehicles />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </BrowserRouter>
-      </ParkingProvider>
-    </TooltipProvider>
-  </QueryClientProvider>
-);
+const App = () => {
+  const isMobile = useIsMobile();
+
+  return (
+    <QueryClientProvider client={queryClient}>
+      <TooltipProvider>
+        <ParkingProvider>
+          <Toaster />
+          <Sonner />
+          <BrowserRouter>
+            <div className={`min-h-screen ${isMobile ? 'mobile-container' : 'container'}`}>
+              <Routes>
+                <Route path="/" element={<Index />} />
+                <Route path="/search" element={<Search />} />
+                <Route path="/parking/:id" element={<ParkingDetail />} />
+                <Route path="/parking/:id/book" element={<BookParking />} />
+                <Route path="/bookings" element={<Bookings />} />
+                <Route path="/history" element={<History />} />
+                <Route path="/profile" element={<Profile />} />
+                <Route path="/settings" element={<Settings />} />
+                <Route path="/support" element={<Support />} />
+                <Route path="/vehicles" element={<Vehicles />} />
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </div>
+          </BrowserRouter>
+        </ParkingProvider>
+      </TooltipProvider>
+    </QueryClientProvider>
+  );
+};
 
 export default App;

@@ -6,10 +6,12 @@ import { MapPin, Navigation } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useParking } from "@/context/ParkingContext";
 import { useNavigate } from "react-router-dom";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const Index = () => {
   const navigate = useNavigate();
   const { parkings, searchParking } = useParking();
+  const isMobile = useIsMobile();
 
   return (
     <div className="flex flex-col min-h-screen bg-gray-100">
@@ -17,7 +19,7 @@ const Index = () => {
       
       <main className="flex-1 pt-28 pb-20 px-4 flex flex-col">
         {/* Carte (placeholder) */}
-        <div className="relative w-full h-60 bg-gray-300 rounded-lg flex items-center justify-center mb-4">
+        <div className={`relative w-full ${isMobile ? 'h-48 sm:h-60' : 'h-60'} bg-gray-300 rounded-lg flex items-center justify-center mb-4`}>
           <div className="absolute inset-0 rounded-lg overflow-hidden">
             <div className="w-full h-full bg-[url('https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/2.3488,48.8534,12,0/600x400?access_token=pk.placeholder')] bg-center bg-cover">
               {/* Mapbox serait utilisé ici dans une version complète */}
@@ -58,7 +60,7 @@ const Index = () => {
         </div>
         
         <Button 
-          className="mt-4"
+          className={`mt-4 ${isMobile ? 'w-full sm:w-auto' : ''}`}
           onClick={() => navigate('/search')}
         >
           Voir tous les parkings

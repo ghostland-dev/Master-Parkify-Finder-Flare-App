@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -98,4 +99,27 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+/* Responsive styles for different screen sizes */
+@layer utilities {
+  .mobile-container {
+    @apply max-w-md mx-auto;
+  }
+  
+  .content-container {
+    @apply px-4 md:px-6 lg:px-8;
+  }
+  
+  .responsive-grid {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4;
+  }
+  
+  .responsive-modal {
+    @apply w-full max-w-md md:max-w-lg mx-auto;
+  }
+}
+
+html, body {
+  @apply h-full m-0 p-0 overflow-x-hidden;
 }
