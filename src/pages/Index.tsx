@@ -1,47 +1,36 @@
 
-import React, { useState } from "react";
+import React from "react";
 import Navbar from "@/components/Navbar";
 import Header from "@/components/Header";
-import { MapPin } from "lucide-react";
+import { MapPin, Navigation } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useParking } from "@/context/ParkingContext";
 import { useNavigate } from "react-router-dom";
 import { useIsMobile } from "@/hooks/use-mobile";
-import ParkingMap from "@/components/ParkingMap";
 
 const Index = () => {
   const navigate = useNavigate();
   const { parkings, searchParking } = useParking();
   const isMobile = useIsMobile();
 
-  // Generate mock parking locations based on existing parking data
-  const parkingLocations = parkings.map((parking, index) => ({
-    id: parking.id,
-    name: parking.name,
-    lat: 48.8534 + (index * 0.01), // Generated based on index to create different positions
-    lng: 2.3488 + (index * 0.01),
-    availableSpots: parking.availableSpots,
-    totalSpots: parking.totalSpots
-  }));
-
-  const handleMarkerClick = (id: string) => {
-    navigate(`/parking/${id}`);
-  };
-
   return (
     <div className="flex flex-col min-h-screen bg-gray-100">
       <Header onSearch={searchParking} />
       
       <main className="flex-1 pt-28 pb-20 px-4 flex flex-col">
-        {/* Carte interactive avec Leaflet */}
-        <div className={`relative w-full ${isMobile ? 'h-52 sm:h-64' : 'h-64'} rounded-lg mb-4`}>
-          <ParkingMap
-            center={[48.8534, 2.3488]}
-            zoom={13}
-            locations={parkingLocations}
-            height="100%"
-            onMarkerClick={handleMarkerClick}
-          />
+        {/* Carte (placeholder) */}
+        <div className={`relative w-full ${isMobile ? 'h-48 sm:h-60' : 'h-60'} bg-gray-300 rounded-lg flex items-center justify-center mb-4`}>
+          <div className="absolute inset-0 rounded-lg overflow-hidden">
+            <div className="w-full h-full bg-[url('https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/2.3488,48.8534,12,0/600x400?access_token=pk.placeholder')] bg-center bg-cover">
+              {/* Mapbox serait utilisé ici dans une version complète */}
+            </div>
+          </div>
+          <div className="z-10 text-center">
+            <Navigation className="h-8 w-8 mx-auto mb-2 text-primary-blue" />
+            <span className="bg-white px-3 py-1 rounded-full text-sm shadow-md">
+              Carte des parkings à proximité
+            </span>
+          </div>
         </div>
 
         {/* Parkings à proximité */}
