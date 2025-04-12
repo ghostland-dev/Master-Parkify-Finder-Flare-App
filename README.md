@@ -1,69 +1,97 @@
-# Welcome to your Lovable project
+ 
+# Parkify
 
-## Project info
+Parkify is a web application designed to help users find available parking spots in their city. The app offers real-time availability of parking spaces, pricing information, and a search feature to help users easily find parking locations near them. It provides essential details like operating hours, distance, and availability status, making parking more convenient for everyone.
 
-**URL**: https://lovable.dev/projects/c740fc51-d14a-4a67-a30b-bce75b14ed34
+## Features
 
-## How can I edit this code?
+- **Search Parking**: Search for parking spots by location, distance, and availability.
+- **Real-Time Availability**: Check if a parking spot is available, limited, or fully occupied.
+- **Parking Details**: Get detailed information on parking locations, including pricing per hour, operating hours, and available spots.
+- **Filters**: Filter parking options by distance, availability, and other relevant criteria.
+- **User Profile**: Manage reservations, and view parking history.
+- **Multi-language Support**: Available in French for easy use in Francophone regions.
 
-There are several ways of editing your application.
+## Technologies
 
-**Use Lovable**
+- **Frontend**:
+  - React.js
+  - Tailwind CSS
+  - Vite for fast builds
+  - React Router for navigation
+- **Backend**:
+  - Node.js (if backend APIs are used to store parking data)
+  - REST API (to fetch parking spot data)
+- **Others**:
+  - Google Maps API (for location-based search)
+  - Unsplash for stock images
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/c740fc51-d14a-4a67-a30b-bce75b14ed34) and start prompting.
+## Installation
 
-Changes made via Lovable will be committed automatically to this repo.
+To run the project locally, follow these steps:
 
-**Use your preferred IDE**
+1. Clone the repository:
+   ```bash
+   git clone <repository-url>
+   ```
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+2. Navigate to the project directory:
+   ```bash
+   cd Parkify
+   ```
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+3. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-Follow these steps:
+4. Start the development server:
+   ```bash
+   npm run dev
+   ```
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+The application will be accessible at `http://localhost:3000`.
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+## Configuration
 
-# Step 3: Install the necessary dependencies.
-npm i
+Make sure to configure the following environment variables if needed:
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+- **Google Maps API Key**: For location search and mapping features, make sure you set your Google Maps API key in the `.env` file.
+- **Vite Configuration**: You may need to adjust Vite config files for production builds.
+
+## Screenshots
+
+![alt text](image.png)
+## Footer Links
+
+- **Company Info**:
+  - About Us
+  - Careers
+  - Blog
+- **Resources**:
+  - Guides
+  - FAQ
+- **Legal**:
+  - Terms & Conditions
+  - Privacy Policy
+  - Cookies Policy
+
+## Contributing
+
+If you'd like to contribute to the development of Parkify, feel free to fork the repository and create pull requests with improvements or bug fixes.
+
+## License
+
+Distributed under the MIT License. See `LICENSE` for more information.
+
+## Developer
+
+- **Developer**: Ismail MOUYAHADA
+
+## Footer
+
+```
+© 2025 Parkify. All rights reserved.
 ```
 
-**Edit a file directly in GitHub**
-
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with .
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/c740fc51-d14a-4a67-a30b-bce75b14ed34) and click on Share -> Publish.
-
-## I want to use a custom domain - is that possible?
-
-We don't support custom domains (yet). If you want to deploy your project under your own domain then we recommend using Netlify. Visit our docs for more details: [Custom domains](https://docs.lovable.dev/tips-tricks/custom-domain/)
+ 
